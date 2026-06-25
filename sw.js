@@ -1,5 +1,5 @@
 /* Mind Reset — Service Worker */
-const CACHE = 'mind-reset-v1';
+const CACHE = 'mind-reset-v2';
 const ASSETS = [
   './',
   './index.html',
