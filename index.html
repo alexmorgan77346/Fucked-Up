@@ -1,129 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#0f1117" />
-  <meta name="description" content="Mind Reset – one step at a time." />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Mind Reset" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+  <meta name="theme-color" content="#0d0d0f"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="Mind Reset"/>
   <title>Mind Reset</title>
-  <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="icons/icon-192.png" />
-  <link rel="apple-touch-icon" href="icons/icon-192.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json"/>
+  <link rel="icon" href="icons/icon-192.png"/>
+  <link rel="apple-touch-icon" href="icons/icon-192.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div id="app">
+<div id="app">
 
-    <!-- SCREEN 1: ENTRY — intensity picker -->
-    <div id="screen-entry" class="screen active">
-      <div class="screen-inner">
-        <div class="app-label">MIND RESET</div>
-        <div class="entry-question">How bad is it<br/>right now?</div>
-        <div class="intensity-grid">
-          <button class="intensity-btn" data-val="1">1</button>
-          <button class="intensity-btn" data-val="2">2</button>
-          <button class="intensity-btn" data-val="3">3</button>
-          <button class="intensity-btn" data-val="4">4</button>
-          <button class="intensity-btn" data-val="5">5</button>
-          <button class="intensity-btn" data-val="6">6</button>
-          <button class="intensity-btn" data-val="7">7</button>
-          <button class="intensity-btn" data-val="8">8</button>
-          <button class="intensity-btn" data-val="9">9</button>
-          <button class="intensity-btn" data-val="10">10</button>
-        </div>
-        <div class="intensity-labels">
-          <span>manageable</span>
-          <span>really bad</span>
-        </div>
-        <div class="entry-sub">Or pick what fits:</div>
-        <div class="state-btns">
-          <button class="state-btn" data-protocol="brainfog">Brain fog</button>
-          <button class="state-btn" data-protocol="anxiety">Anxiety</button>
-          <button class="state-btn" data-protocol="anger">Anger</button>
-          <button class="state-btn" data-protocol="burnout">Burnout</button>
-          <button class="state-btn" data-protocol="lowmood">Low mood</button>
-        </div>
-        <button class="ghost-btn" id="open-log-btn">view history →</button>
+  <!-- ── ENTRY ── -->
+  <div id="screen-entry" class="screen active">
+    <div class="screen-inner">
+      <div class="app-label">MIND RESET</div>
+      <div class="entry-question">How bad is it<br>right now?</div>
+      <div class="intensity-grid">
+        <button class="intensity-btn" data-val="1">1</button>
+        <button class="intensity-btn" data-val="2">2</button>
+        <button class="intensity-btn" data-val="3">3</button>
+        <button class="intensity-btn" data-val="4">4</button>
+        <button class="intensity-btn" data-val="5">5</button>
+        <button class="intensity-btn" data-val="6">6</button>
+        <button class="intensity-btn" data-val="7">7</button>
+        <button class="intensity-btn" data-val="8">8</button>
+        <button class="intensity-btn" data-val="9">9</button>
+        <button class="intensity-btn" data-val="10">10</button>
       </div>
+      <div class="intensity-labels">
+        <span>manageable</span>
+        <span>really bad</span>
+      </div>
+      <div class="entry-sub">Or pick what fits:</div>
+      <div class="state-btns">
+        <button class="state-btn" data-protocol="brainfog">Brain fog</button>
+        <button class="state-btn" data-protocol="anxiety">Anxiety</button>
+        <button class="state-btn" data-protocol="anger">Anger</button>
+        <button class="state-btn" data-protocol="burnout">Burnout</button>
+        <button class="state-btn" data-protocol="lowmood">Low mood</button>
+      </div>
+      <button class="ghost-btn" id="open-log-btn">view history →</button>
     </div>
-
-    <!-- SCREEN 2: PROTOCOL RUNNER -->
-    <div id="screen-protocol" class="screen">
-      <div class="protocol-header">
-        <button class="back-link" id="proto-back">← exit</button>
-        <div class="proto-name" id="proto-name"></div>
-        <div class="step-counter" id="step-counter"></div>
-      </div>
-      <div class="protocol-body">
-        <div class="step-number" id="step-number"></div>
-        <div class="step-instruction" id="step-instruction"></div>
-        <div class="step-detail" id="step-detail"></div>
-
-        <!-- Timer (shown for timed steps) -->
-        <div id="timer-block" class="timer-block hidden">
-          <div class="timer-ring-wrap">
-            <svg class="timer-ring" viewBox="0 0 120 120">
-              <circle class="ring-bg" cx="60" cy="60" r="52"/>
-              <circle class="ring-fill" id="ring-fill" cx="60" cy="60" r="52"/>
-            </svg>
-            <div class="timer-num" id="timer-num">0:00</div>
-          </div>
-        </div>
-
-        <!-- Breathe animation (shown for breath steps) -->
-        <div id="breath-block" class="breath-block hidden">
-          <div class="breath-circle" id="breath-circle">
-            <span class="breath-word" id="breath-word">ready</span>
-          </div>
-          <div class="breath-phase" id="breath-phase">Tap to begin</div>
-        </div>
-
-        <!-- Text input (shown for write steps) -->
-        <div id="write-block" class="write-block hidden">
-          <textarea id="write-input" class="write-area" placeholder="Write here…" rows="4"></textarea>
-        </div>
-
-        <!-- Choice block (shown for choice steps) -->
-        <div id="choice-block" class="choice-block hidden">
-          <div id="choice-options" class="choice-options"></div>
-        </div>
-      </div>
-      <div class="protocol-footer">
-        <button class="next-btn" id="next-btn">Done — next step</button>
-        <button class="skip-link" id="skip-btn">skip this step</button>
-      </div>
-    </div>
-
-    <!-- SCREEN 3: DONE -->
-    <div id="screen-done" class="screen">
-      <div class="screen-inner done-inner">
-        <div class="done-icon">○</div>
-        <div class="done-title" id="done-title">Protocol complete.</div>
-        <div class="done-body" id="done-body"></div>
-        <button class="next-btn" id="done-again">Run it again</button>
-        <button class="ghost-btn" id="done-home">Back to start</button>
-      </div>
-    </div>
-
-    <!-- SCREEN 4: LOG -->
-    <div id="screen-log" class="screen">
-      <div class="screen-inner">
-        <button class="back-link" id="log-back">← back</button>
-        <div class="log-title">History</div>
-        <div id="log-list" class="log-list"></div>
-        <div id="log-empty" class="log-empty hidden">No sessions yet. Use the app a few times and your history will appear here.</div>
-      </div>
-    </div>
-
   </div>
 
-  <script src="app.js"></script>
+  <!-- ── PROTOCOL ── -->
+  <div id="screen-protocol" class="screen">
+    <div class="protocol-header">
+      <button class="back-link" id="proto-back">← exit</button>
+      <div class="proto-name" id="proto-name"></div>
+      <div class="step-counter" id="step-counter"></div>
+    </div>
+
+    <div class="protocol-body">
+      <div class="step-number"      id="step-number"></div>
+      <div class="step-instruction" id="step-instruction"></div>
+      <div class="step-detail"      id="step-detail"></div>
+
+      <!-- Timer block -->
+      <div id="timer-block" class="block-wrap" style="display:none">
+        <div class="timer-ring-wrap" id="timer-ring-wrap">
+          <svg class="timer-ring" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+            <circle class="ring-bg"   cx="80" cy="80" r="52"/>
+            <circle class="ring-fill" cx="80" cy="80" r="52" id="ring-fill"/>
+          </svg>
+          <div class="timer-num" id="timer-num">—</div>
+        </div>
+        <div class="timer-hint" id="timer-hint"></div>
+        <div class="timer-btns">
+          <button class="timer-btn" id="timer-play">▶ Start</button>
+          <button class="timer-btn timer-btn-ghost" id="timer-pause"  style="display:none">⏸ Pause</button>
+          <button class="timer-btn timer-btn-ghost" id="timer-resume" style="display:none">▶ Resume</button>
+          <button class="timer-btn timer-btn-ghost" id="timer-reset"  style="display:none">↺ Reset</button>
+        </div>
+      </div>
+
+      <!-- Breath block -->
+      <div id="breath-block" class="block-wrap" style="display:none">
+        <div class="breath-wrap">
+          <div class="breath-circle" id="breath-circle">
+            <div class="breath-label" id="breath-label">tap to begin</div>
+          </div>
+          <div class="breath-status" id="breath-status"></div>
+        </div>
+      </div>
+
+      <!-- Write block -->
+      <div id="write-block" class="block-wrap" style="display:none">
+        <textarea id="write-input" class="write-area" rows="5" placeholder="Write here…"></textarea>
+      </div>
+
+      <!-- Choice block -->
+      <div id="choice-block" class="block-wrap" style="display:none">
+        <div id="choice-options" class="choice-options"></div>
+      </div>
+    </div>
+
+    <div class="protocol-footer">
+      <button class="next-btn" id="next-btn">Done — next step</button>
+      <button class="skip-btn" id="skip-btn">skip this step</button>
+    </div>
+  </div>
+
+  <!-- ── DONE ── -->
+  <div id="screen-done" class="screen">
+    <div class="screen-inner done-inner">
+      <div class="done-mark">○</div>
+      <div class="done-title" id="done-title"></div>
+      <div class="done-body"  id="done-body"></div>
+      <button class="next-btn" id="done-again">Run it again</button>
+      <button class="ghost-btn" id="done-home">Back to start</button>
+    </div>
+  </div>
+
+  <!-- ── LOG ── -->
+  <div id="screen-log" class="screen">
+    <div class="screen-inner">
+      <button class="back-link" id="log-back">← back</button>
+      <div class="log-title">History</div>
+      <div id="log-list"  class="log-list"></div>
+      <div id="log-empty" class="log-empty" style="display:none">No sessions yet.</div>
+    </div>
+  </div>
+
+</div>
+<script src="app.js"></script>
 </body>
 </html>
