@@ -1,6 +1,6 @@
 {
-  "name": "Mind Reset",
-  "short_name": "Mind Reset",
+  "name": "Reset",
+  "short_name": "Reset",
   "description": "Your calm space when things feel overwhelming.",
   "start_url": "./",
   "display": "standalone",
